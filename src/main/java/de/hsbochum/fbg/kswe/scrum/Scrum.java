@@ -43,6 +43,15 @@ public class Scrum {
              * UnexpectedNextEventException if the order is not correct.
              * Hint: the method Class#isAssignableFrom() might be helpful
              */
+            previousEvent = currentEvent;
+            if(event.getClass().isAssignableFrom(previousEvent.followingEventType())){
+               
+                currentEvent = event;   
+            }
+            else{
+                throw new UnexpectedNextEventException("You're not using the srcum rules");
+            }
+            
         }
         
         event.init(previousEvent, productBacklog);
